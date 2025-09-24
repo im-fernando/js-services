@@ -4,7 +4,7 @@
             "id": "ATD001",
             "username": "joao.silva",
             "display_name": "João Silva",
-            "password_hash": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+            "password_hash": "0f840d7354d0873e3054340243d745a0670ca3da75acb727e75228afee529bbb",
             "role": "senior_support",
             "permissions": {
                 "can_restart_services": true,
@@ -21,7 +21,7 @@
             "id": "ATD002",
             "username": "maria.santos",
             "display_name": "Maria Santos",
-            "password_hash": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+            "password_hash": "0f840d7354d0873e3054340243d745a0670ca3da75acb727e75228afee529bbb",
             "role": "junior_support",
             "permissions": {
                 "can_restart_services": true,
@@ -38,7 +38,7 @@
             "id": "ATD003",
             "username": "admin",
             "display_name": "Administrador",
-            "password_hash": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+            "password_hash": "0f840d7354d0873e3054340243d745a0670ca3da75acb727e75228afee529bbb",
             "role": "administrator",
             "permissions": {
                 "can_restart_services": true,
