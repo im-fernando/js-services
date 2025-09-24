@@ -7,7 +7,7 @@ Gerencia informações e atividades dos atendentes conectados
 
 import time
 import threading
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 from datetime import datetime, timedelta
 
 from utils.auth import QualityAuthManager
