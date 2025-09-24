@@ -9,6 +9,7 @@ import sys
 import os
 import argparse
 import signal
+import time
 from pathlib import Path
 
 # Adicionar o diretório raiz ao path
