@@ -1,0 +1,71 @@
+{
+    "attendants": [
+        {
+            "id": "ATD001",
+            "username": "joao.silva",
+            "display_name": "João Silva",
+            "password_hash": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+            "role": "senior_support",
+            "permissions": {
+                "can_restart_services": true,
+                "can_kill_processes": true,
+                "can_view_logs": true,
+                "can_manage_all_clients": true,
+                "can_perform_critical_actions": true
+            },
+            "assigned_clients": ["*"],
+            "shift": "morning",
+            "created_at": "2025-01-22T08:00:00Z"
+        },
+        {
+            "id": "ATD002",
+            "username": "maria.santos",
+            "display_name": "Maria Santos",
+            "password_hash": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+            "role": "junior_support",
+            "permissions": {
+                "can_restart_services": true,
+                "can_kill_processes": false,
+                "can_view_logs": true,
+                "can_manage_all_clients": false,
+                "can_perform_critical_actions": false
+            },
+            "assigned_clients": ["QUALITY_CLIENTE_001", "QUALITY_CLIENTE_002"],
+            "shift": "afternoon",
+            "created_at": "2025-01-22T08:00:00Z"
+        },
+        {
+            "id": "ATD003",
+            "username": "admin",
+            "display_name": "Administrador",
+            "password_hash": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+            "role": "administrator",
+            "permissions": {
+                "can_restart_services": true,
+                "can_kill_processes": true,
+                "can_view_logs": true,
+                "can_manage_all_clients": true,
+                "can_perform_critical_actions": true,
+                "can_manage_attendants": true,
+                "can_view_all_sessions": true
+            },
+            "assigned_clients": ["*"],
+            "shift": "any"
+        }
+    ],
+    "roles": {
+        "administrator": {
+            "description": "Acesso total ao sistema",
+            "level": 3
+        },
+        "senior_support": {
+            "description": "Suporte sênior com acesso amplo",
+            "level": 2
+        },
+        "junior_support": {
+            "description": "Suporte júnior com acesso limitado",
+            "level": 1
+        }
+    },
+    "default_password": "quality123"
+}

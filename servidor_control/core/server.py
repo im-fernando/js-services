@@ -14,6 +14,9 @@ from datetime import datetime
 
 from .client_manager import QualityClientManager
 from .command_handler import QualityCommandHandler
+from .session_manager import SessionManager
+from .attendant_manager import AttendantManager
+from database.activity_log import ActivityLogger
 from utils.helpers import safe_json_serialize, validate_client_id
 
 class QualityControlServer:
@@ -33,6 +36,9 @@ class QualityControlServer:
         # Componentes principais
         self.client_manager = QualityClientManager(config, logger)
         self.command_handler = QualityCommandHandler(config, logger)
+        self.session_manager = SessionManager(logger)
+        self.attendant_manager = AttendantManager(config, logger)
+        self.activity_logger = ActivityLogger(logger)
         
         # Estado do servidor
         self.running = False
@@ -44,6 +50,7 @@ class QualityControlServer:
         
         # Modo Quality
         self.quality_mode = False
+        self.multi_attendant_mode = True
         
         self.logger.info("🌐 Quality Control Server inicializado")
     

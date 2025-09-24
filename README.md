@@ -1,6 +1,6 @@
-# Quality Remote Control System
+# Quality Remote Control System - Multi-Atendente
 
-Sistema distribuído para monitoramento e controle remoto de serviços Quality, composto por um agente cliente e um painel de controle servidor.
+Sistema distribuído para monitoramento e controle remoto de serviços Quality, composto por um agente cliente e um painel de controle servidor com suporte a **múltiplos atendentes simultâneos**.
 
 ## 🏗️ Arquitetura
 
@@ -13,14 +13,18 @@ Sistema distribuído para monitoramento e controle remoto de serviços Quality, 
   - Streaming de logs em tempo real
   - Comunicação com o servidor de controle
 
-### Componente Servidor (Control Panel)
+### Componente Servidor (Control Panel Multi-Atendente)
 - **Localização**: `servidor_control/`
-- **Função**: Interface para atendentes gerenciarem os clientes remotamente
+- **Função**: Interface para múltiplos atendentes gerenciarem os clientes remotamente
 - **Responsabilidades**:
   - Gerenciamento de clientes conectados
-  - Interface CLI interativa
-  - Execução de comandos remotos
-  - Dashboard de status consolidado
+  - Sistema de sessões simultâneas
+  - Controle de conflitos entre atendentes
+  - Sistema de permissões granulares
+  - Interface CLI específica por atendente
+  - Painel administrativo
+  - Log de atividades detalhado
+  - Chat interno entre atendentes
 
 ## 🚀 Instalação
 
@@ -40,15 +44,35 @@ O script irá:
 - 📁 Criar estrutura de arquivos
 - 🧪 Testar a instalação
 
-### 2. Instalação do Servidor (Control Panel)
+### 2. Instalação do Servidor (Control Panel Multi-Atendente)
+
+Execute o script de instalação do sistema multi-atendente:
+
+```bash
+python install_multi_attendant_system.py
+```
+
+Ou instalação manual:
 
 ```bash
 cd servidor_control
 pip install -r requirements.txt
-python main.py --quality-mode
+python main.py --multi-attendant --quality-mode
 ```
 
 ## 🔧 Configuração
+
+### Usuários e Permissões
+
+#### Usuários Padrão
+- **admin** / admin123 - Administrador (acesso total)
+- **joao.silva** / quality123 - Suporte Sênior
+- **maria.santos** / quality123 - Suporte Júnior
+
+#### Níveis de Acesso
+- **🔧 Administrador**: Acesso total ao sistema, gerenciamento de usuários
+- **👨‍💼 Suporte Sênior**: Acesso amplo, pode finalizar processos e ações críticas
+- **👩‍💻 Suporte Júnior**: Acesso limitado, apenas operações básicas
 
 ### Serviços Quality Monitorados
 
@@ -98,23 +122,81 @@ cd C:\Quality\RemoteAgent
 python main.py
 ```
 
-### Iniciar o Servidor de Controle
+### Iniciar o Servidor de Controle Multi-Atendente
 
 ```bash
+# Servidor principal
+C:\Quality\ControlPanel\start_server.bat
+
+# Ou manualmente
 cd servidor_control
-python main.py --quality-mode --port 8765
+python main.py --multi-attendant --quality-mode --port 8765
 ```
 
-### Interface do Servidor
+### Conectar Atendentes
 
+```bash
+# Interface de atendente
+C:\Quality\ControlPanel\start_attendant.bat
+
+# Ou manualmente
+cd servidor_control
+python interface/attendant_cli.py --server localhost:8765
+```
+
+### Acessar Painel Administrativo
+
+```bash
+# Interface administrativa
+C:\Quality\ControlPanel\start_admin.bat
+
+# Ou manualmente
+cd servidor_control
+python interface/admin_cli.py
+```
+
+### Interface Multi-Atendente
+
+#### Login de Atendente
 ```
 === QUALITY REMOTE CONTROL PANEL ===
-1. Listar Clientes Conectados
-2. Selecionar Cliente para Gerenciar
-3. Dashboard Consolidado
-4. Histórico de Atividades
-5. Configurações
-0. Sair
+=== LOGIN DE ATENDENTE ===
+
+Usuário: joao.silva
+Senha: ********
+
+🟢 Login realizado com sucesso!
+Bem-vindo, João Silva (Suporte Sênior)
+
+Sessões ativas: 3 atendentes conectados
+- Maria Santos (Suporte Júnior) - Cliente: Posto ABC
+- Pedro Costa (Suporte Sênior) - Dashboard  
+- Você (João Silva) - Recém conectado
+```
+
+#### Dashboard Multi-Atendente
+```
+=== DASHBOARD - João Silva ===
+🕐 14:35:22 | Sessão: SES_ATD001_1737555322
+
+📊 VISÃO GERAL:
+- Clientes Conectados: 8
+- Seus Clientes Designados: 8 (todos)
+- Clientes Disponíveis: 6
+- Clientes em Uso: 2
+
+🔒 CLIENTES BLOQUEADOS:
+- Posto ABC → Maria Santos (Reiniciando serviços)
+- Posto XYZ → Pedro Costa (Visualizando logs)
+
+=== MENU PRINCIPAL ===
+1. 🖥️  Gerenciar Clientes Disponíveis
+2. 👥 Ver Atividade de Outros Atendentes  
+3. 📊 Dashboard Consolidado
+4. ⚙️  Configurações da Sessão
+5. 📋 Histórico de Atividades
+6. 💬 Chat Interno
+0. Logout
 ```
 
 ## 📋 Funcionalidades
@@ -144,6 +226,16 @@ python main.py --quality-mode --port 8765
 - 🔄 Reconexão automática em caso de falha
 - 💓 Sistema de heartbeat para verificação de conectividade
 - 🆔 Identificação única de clientes
+
+### Sistema Multi-Atendente
+- 👥 **Múltiplos atendentes simultâneos**: Suporte a vários atendentes conectados ao mesmo tempo
+- 🔐 **Sistema de autenticação**: Login obrigatório com diferentes níveis de acesso
+- 🔒 **Controle de conflitos**: Evita ações simultâneas no mesmo cliente
+- 👤 **Permissões granulares**: Controle de acesso por papel (Admin, Suporte Sênior, Suporte Júnior)
+- 📋 **Log de atividades**: Rastreamento completo de todas as ações por atendente
+- 💬 **Chat interno**: Comunicação entre atendentes
+- 🔧 **Painel administrativo**: Gerenciamento de usuários e sistema
+- 📊 **Relatórios detalhados**: Estatísticas por atendente e período
 
 ## 🛠️ Comandos Disponíveis
 
