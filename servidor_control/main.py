@@ -36,6 +36,8 @@ def main():
                        help='Modo debug com logs detalhados')
     parser.add_argument('--quality-mode', action='store_true',
                        help='Modo específico para serviços Quality')
+    parser.add_argument('--multi-attendant', action='store_true',
+                       help='Modo multi-atendente (padrão)')
     
     args = parser.parse_args()
     
