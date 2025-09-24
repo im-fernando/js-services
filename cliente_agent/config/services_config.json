@@ -1,0 +1,83 @@
+{
+    "services": [
+        {
+            "name": "srvIntegraWeb",
+            "display_name": "IntegraWebService",
+            "executable_path": "C:\\Quality\\web\\IntegraWebService.exe",
+            "log_base_path": "C:\\Quality\\LOG\\Integra",
+            "log_structure": "nested_numeric_folders",
+            "log_file_pattern": "*.txt",
+            "description": "Serviço de Integração Web do Quality",
+            "enabled": true
+        },
+        {
+            "name": "ServicoFiscal",
+            "display_name": "webPostoFiscalService", 
+            "executable_path": "C:\\Quality\\Services\\webPostoPayServer\\webPostoFiscalServer.exe",
+            "log_base_path": "C:\\Quality\\LOG\\webPostoFiscalServer",
+            "log_structure": "nested_numeric_folders",
+            "log_file_pattern": "*.txt",
+            "description": "Serviço Fiscal do WebPosto",
+            "enabled": true
+        },
+        {
+            "name": "ServicoAutomacao",
+            "display_name": "webPostoLeituraAutomacao",
+            "executable_path": "C:\\Quality\\Services\\webPostoLeituraAutomacao\\webPostoLeituraAutomacao.exe", 
+            "log_base_path": "C:\\Quality\\LOG\\webPostoLeituraAutomacao",
+            "log_structure": "nested_numeric_folders",
+            "log_file_pattern": "*.txt",
+            "description": "Serviço de Automação e Leitura",
+            "enabled": true
+        },
+        {
+            "name": "webPostoPayServer",
+            "display_name": "webPostoPayServer",
+            "executable_path": "C:\\Quality\\Services\\webPostoPayServer\\winSW\\webPostoPaySW.exe",
+            "log_base_path": "C:\\Quality\\LOG\\QualityPDV_PAF", 
+            "log_structure": "nested_numeric_folders",
+            "log_file_pattern": "*.txt",
+            "description": "Servidor de Pagamento WebPosto",
+            "enabled": true
+        },
+        {
+            "name": "QualityPulser",
+            "display_name": "QualityPulserWeb",
+            "executable_path": "C:\\Quality\\PulserWeb.exe",
+            "log_base_path": "C:\\Quality\\LOG\\WebPostoPulser",
+            "log_structure": "nested_numeric_folders", 
+            "log_file_pattern": "*.txt",
+            "description": "Quality Pulser Web Service",
+            "enabled": true
+        }
+    ],
+    "server": {
+        "host": "192.168.1.100",
+        "port": 8765,
+        "reconnect_interval": 5,
+        "heartbeat_interval": 30
+    },
+    "client": {
+        "id": "QUALITY_CLIENTE_001",
+        "name": "Posto Quality - Terminal 01",
+        "location": "Matriz"
+    },
+    "log_monitoring": {
+        "refresh_interval": 1,
+        "max_lines_buffer": 1000,
+        "encoding": "utf-8"
+    },
+    "service_dependencies": {
+        "ServicoFiscal": ["srvIntegraWeb"],
+        "ServicoAutomacao": ["srvIntegraWeb", "ServicoFiscal"], 
+        "webPostoPayServer": ["ServicoFiscal"],
+        "QualityPulser": ["srvIntegraWeb"]
+    },
+    "startup_order": [
+        "srvIntegraWeb",
+        "ServicoFiscal", 
+        "ServicoAutomacao",
+        "webPostoPayServer",
+        "QualityPulser"
+    ]
+}

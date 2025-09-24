@@ -1,0 +1,19 @@
+# Quality Control Panel - Dependências
+# Sistema de controle remoto para serviços Quality
+
+# Servidor WebSocket
+websocket-server==0.4
+
+# Interface CLI
+colorama==0.4.6
+rich==13.7.0
+
+# Manipulação de dados
+requests==2.31.0
+
+# Logging e formatação
+python-dateutil==2.8.2
+
+# Desenvolvimento e testes
+pytest==7.4.3
+pytest-cov==4.1.0

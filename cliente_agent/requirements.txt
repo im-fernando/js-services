@@ -1,0 +1,24 @@
+# Quality Remote Agent - Dependências
+# Sistema de monitoramento e controle remoto para serviços Quality
+
+# Comunicação WebSocket
+websocket-client==1.6.4
+
+# Monitoramento de sistema e processos
+psutil==5.9.6
+
+# Manipulação de dados
+requests==2.31.0
+
+# Logging e formatação
+colorama==0.4.6
+
+# Utilitários
+python-dateutil==2.8.2
+
+# Para instalação como serviço Windows (opcional)
+pywin32==306; sys_platform == "win32"
+
+# Desenvolvimento e testes
+pytest==7.4.3
+pytest-cov==4.1.0
