@@ -115,8 +115,7 @@ class QualityControlServer:
             # Configurar servidor WebSocket
             self.ws_server = websocket_server.WebsocketServer(
                 self.port,
-                host=self.host,
-                loglevel=websocket_server.logging.INFO
+                host=self.host
             )
             
             # Configurar callbacks
