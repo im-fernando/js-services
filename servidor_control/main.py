@@ -68,6 +68,15 @@ def main():
         
         logger.info(f"🌐 Servidor iniciando em {config['server']['host']}:{config['server']['port']}")
         server.start()
+        
+        # Manter o servidor rodando
+        logger.info("🔄 Servidor rodando... Pressione Ctrl+C para parar")
+        try:
+            while True:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            logger.info("🛑 Parando servidor...")
+            server.stop()
             
     except KeyboardInterrupt:
         print("\n👋 Servidor encerrado pelo usuário")
