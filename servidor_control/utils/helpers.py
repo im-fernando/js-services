@@ -266,8 +266,10 @@ def validate_client_id(client_id: str) -> bool:
     if not client_id or not isinstance(client_id, str):
         return False
     
-    # Verificar se começa com QUALITY_CLIENTE_
-    return client_id.startswith('QUALITY_CLIENTE_')
+    # Aceitar IDs que começam com QUALITY_CLIENTE_ ou SERVIDOR_
+    return (client_id.startswith('QUALITY_CLIENTE_') or 
+            client_id.startswith('SERVIDOR_') or
+            client_id.startswith('CLIENT_'))
 
 def format_client_name(client_id: str, client_name: str) -> str:
     """
