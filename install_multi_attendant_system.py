@@ -59,6 +59,7 @@ def install_server_dependencies():
             
             basic_deps = [
                 "websocket-server==0.4",
+                "websocket-client==1.6.4",
                 "colorama==0.4.6",
                 "rich==13.7.0",
                 "requests==2.31.0"
@@ -266,32 +267,32 @@ try:
     from core.session_manager import SessionManager
     from core.attendant_manager import AttendantManager
     from utils.auth import QualityAuthManager
-    print("✅ Módulos do servidor importados com sucesso")
+    print("OK - Modulos do servidor importados com sucesso")
 except Exception as e:
-    print(f"❌ Erro ao importar módulos: {{e}}")
+    print(f"ERRO - Erro ao importar modulos: {{e}}")
     sys.exit(1)
 
 # Testar carregamento de configuração
 try:
     config = load_config(r"{install_dir}/config/server_config.json")
-    print("✅ Configuração do servidor carregada com sucesso")
+    print("OK - Configuracao do servidor carregada com sucesso")
     print(f"   Host: {{config['server']['host']}}")
     print(f"   Porta: {{config['server']['port']}}")
-    print(f"   Serviços Quality: {{len(config['quality_services'])}}")
+    print(f"   Servicos Quality: {{len(config['quality_services'])}}")
 except Exception as e:
-    print(f"❌ Erro ao carregar configuração: {{e}}")
+    print(f"ERRO - Erro ao carregar configuracao: {{e}}")
     sys.exit(1)
 
 # Testar sistema de autenticação
 try:
     auth_manager = QualityAuthManager(r"{install_dir}/config/users_config.json")
     users = auth_manager.get_all_users()
-    print(f"✅ Sistema de autenticação funcionando - {{len(users)}} usuários")
+    print(f"OK - Sistema de autenticacao funcionando - {{len(users)}} usuarios")
 except Exception as e:
-    print(f"❌ Erro no sistema de autenticação: {{e}}")
+    print(f"ERRO - Erro no sistema de autenticacao: {{e}}")
     sys.exit(1)
 
-print("✅ Teste de instalação do servidor concluído com sucesso!")
+print("OK - Teste de instalacao do servidor concluido com sucesso!")
 """
         
         result = subprocess.run([

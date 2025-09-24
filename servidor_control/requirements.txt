@@ -3,6 +3,7 @@
 
 # Servidor WebSocket
 websocket-server==0.4
+websocket-client==1.6.4
 
 # Interface CLI
 colorama==0.4.6
