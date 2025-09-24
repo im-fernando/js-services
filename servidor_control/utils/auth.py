@@ -7,7 +7,7 @@ Sistema de Autenticação para Quality Control Panel
 import hashlib
 import json
 import os
-from typing import Dict, Any, Optional, Tuple
+from typing import Dict, Any, Optional, Tuple, List
 from datetime import datetime
 
 class QualityAuthManager:
