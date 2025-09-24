@@ -133,6 +133,9 @@ class QualityControlServer:
             )
             self.server_thread.start()
             
+            # Aguardar um pouco para garantir que o servidor iniciou
+            time.sleep(1)
+            
         except ImportError:
             self.logger.error("❌ websocket-server não instalado. Execute: pip install websocket-server")
             raise
