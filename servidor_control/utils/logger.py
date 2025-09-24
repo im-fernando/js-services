@@ -16,13 +16,13 @@ class QualityControlLogger:
     
     def __init__(self, name: str, debug: bool = False):
         self.name = name
-        self.debug = debug
+        self.debug_mode = debug
         self.logger = self._setup_logger()
     
     def _setup_logger(self) -> logging.Logger:
         """Configura o logger com formatação personalizada"""
         logger = logging.getLogger(self.name)
-        logger.setLevel(logging.DEBUG if self.debug else logging.INFO)
+        logger.setLevel(logging.DEBUG if self.debug_mode else logging.INFO)
         
         # Evitar duplicação de handlers
         if logger.handlers:
